@@ -1,0 +1,606 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNION SERVICES LTD</title>
+    <meta name="description" content="Professional IT Solutions for Businesses and Individuals" />
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+      const { useState } = React;
+
+      // Header Component
+      const Header = () => {
+        return React.createElement('header', {
+          className: 'bg-white text-blue-800 py-8'
+        }, 
+          React.createElement('div', {
+            className: 'container mx-auto px-4 flex items-center justify-between'
+          },
+            React.createElement('div', {
+              className: 'flex items-center'
+            },
+              React.createElement('img', {
+                src: '/lovable-uploads/244f4f6c-6976-47d9-bf3a-802f8dab6e5f.png',
+                alt: 'Union Services Ltd Logo',
+                className: 'h-40 w-auto mr-8'
+              })
+            ),
+            React.createElement('div', {
+              className: 'text-center flex-1'
+            },
+              React.createElement('h1', {
+                className: 'text-4xl font-bold mb-3 text-blue-800'
+              }, 'UNION SERVICES LTD'),
+              React.createElement('p', {
+                className: 'text-xl text-blue-600'
+              }, 'Professional IT Solutions for Businesses and Individuals')
+            )
+          )
+        );
+      };
+
+      // Navigation Component
+      const Navigation = () => {
+        const scrollToSection = (sectionId) => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        };
+
+        return React.createElement('nav', {
+          className: 'bg-gradient-to-r from-blue-900 to-yellow-700 py-4'
+        },
+          React.createElement('div', {
+            className: 'container mx-auto px-4 text-center'
+          },
+            React.createElement('button', {
+              onClick: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
+              className: 'text-white font-bold mx-4 hover:text-yellow-200 transition-all'
+            }, 'Home'),
+            React.createElement('button', {
+              onClick: () => scrollToSection('services'),
+              className: 'text-white font-bold mx-4 hover:text-yellow-200 transition-all'
+            }, 'Services'),
+            React.createElement('button', {
+              onClick: () => scrollToSection('about'),
+              className: 'text-white font-bold mx-4 hover:text-yellow-200 transition-all'
+            }, 'About Us'),
+            React.createElement('button', {
+              onClick: () => scrollToSection('contact'),
+              className: 'text-white font-bold mx-4 hover:text-yellow-200 transition-all'
+            }, 'Contact')
+          )
+        );
+      };
+
+      // Hero Component
+      const Hero = () => {
+        return React.createElement('section', {
+          className: 'h-80 flex items-center justify-center text-white text-center bg-cover bg-center relative',
+          style: {
+            backgroundImage: `url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')`
+          }
+        },
+          React.createElement('div', {
+            className: 'absolute inset-0 bg-gradient-to-r from-blue-800/80 to-yellow-600/80'
+          }),
+          React.createElement('div', {
+            className: 'relative z-10 px-4'
+          },
+            React.createElement('h2', {
+              className: 'text-4xl md:text-5xl font-bold'
+            }, 'Reliable & Smart IT Services'),
+            React.createElement('p', {
+              className: 'text-xl mt-4'
+            }, 'Empowering your business with cutting-edge technology')
+          )
+        );
+      };
+
+      // Services Component
+      const Services = () => {
+        const services = [
+          {
+            title: "Software Development",
+            description: "Custom websites and mobile applications tailored to your needs using modern technologies.",
+            image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            icon: React.createElement('svg', {
+              className: "w-12 h-12 text-blue-600 mb-4 mx-auto",
+              fill: "none",
+              stroke: "currentColor",
+              viewBox: "0 0 24 24"
+            }, React.createElement('path', {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: "2",
+              d: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+            }))
+          },
+          {
+            title: "Cloud Backup",
+            description: "Secure and scalable cloud storage solutions to protect your valuable data.",
+            image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            icon: React.createElement('svg', {
+              className: "w-12 h-12 text-blue-600 mb-4 mx-auto",
+              fill: "none",
+              stroke: "currentColor",
+              viewBox: "0 0 24 24"
+            }, React.createElement('path', {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: "2",
+              d: "M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3 3-3M12 12l-3 3 3 3 3-3-3-3z"
+            }))
+          },
+          {
+            title: "CCTV Surveillance",
+            description: "Advanced camera systems with remote access for enhanced security and monitoring.",
+            image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            icon: React.createElement('svg', {
+              className: "w-12 h-12 text-blue-600 mb-4 mx-auto",
+              fill: "none",
+              stroke: "currentColor",
+              viewBox: "0 0 24 24"
+            }, React.createElement('path', {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: "2",
+              d: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+            }))
+          },
+          {
+            title: "Technical Support",
+            description: "Expert assistance in troubleshooting, maintenance, and IT infrastructure management.",
+            image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            icon: React.createElement('svg', {
+              className: "w-12 h-12 text-blue-600 mb-4 mx-auto",
+              fill: "none",
+              stroke: "currentColor",
+              viewBox: "0 0 24 24"
+            }, React.createElement('path', {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: "2",
+              d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+            }), React.createElement('path', {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: "2",
+              d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            }))
+          },
+          {
+            title: "Mobile App Development",
+            description: "Native and cross-platform mobile applications for iOS and Android devices.",
+            image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            icon: React.createElement('svg', {
+              className: "w-12 h-12 text-blue-600 mb-4 mx-auto",
+              fill: "none",
+              stroke: "currentColor",
+              viewBox: "0 0 24 24"
+            }, React.createElement('path', {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: "2",
+              d: "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+            }))
+          },
+          {
+            title: "Network Solutions",
+            description: "Complete network setup, configuration, and maintenance for optimal connectivity.",
+            image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            icon: React.createElement('svg', {
+              className: "w-12 h-12 text-blue-600 mb-4 mx-auto",
+              fill: "none",
+              stroke: "currentColor",
+              viewBox: "0 0 24 24"
+            }, React.createElement('path', {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: "2",
+              d: "M19 11H5m14-7H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2z"
+            }))
+          },
+          {
+            title: "Database Management",
+            description: "Professional database design, optimization, and maintenance services.",
+            image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            icon: React.createElement('svg', {
+              className: "w-12 h-12 text-blue-600 mb-4 mx-auto",
+              fill: "none",
+              stroke: "currentColor",
+              viewBox: "0 0 24 24"
+            }, React.createElement('path', {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: "2",
+              d: "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"
+            }))
+          },
+          {
+            title: "Security Systems",
+            description: "Comprehensive cybersecurity solutions to protect your digital assets.",
+            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            icon: React.createElement('svg', {
+              className: "w-12 h-12 text-blue-600 mb-4 mx-auto",
+              fill: "none",
+              stroke: "currentColor",
+              viewBox: "0 0 24 24"
+            }, React.createElement('path', {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: "2",
+              d: "M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+            }))
+          }
+        ];
+
+        return React.createElement('section', {
+          id: 'services',
+          className: 'py-16 bg-white'
+        },
+          React.createElement('div', {
+            className: 'container mx-auto px-4'
+          },
+            React.createElement('h3', {
+              className: 'text-3xl font-bold text-center mb-12 text-blue-800'
+            }, 'Our Services'),
+            React.createElement('div', {
+              className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'
+            },
+              services.map((service, index) =>
+                React.createElement('div', {
+                  key: index,
+                  className: 'bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border-2 border-yellow-100 hover:border-yellow-300'
+                },
+                  React.createElement('div', {
+                    className: 'h-48 bg-cover bg-center',
+                    style: { backgroundImage: `url(${service.image})` }
+                  }),
+                  React.createElement('div', {
+                    className: 'p-6 text-center'
+                  },
+                    React.createElement('div', {
+                      className: 'flex justify-center'
+                    }, service.icon),
+                    React.createElement('h4', {
+                      className: 'text-xl font-bold text-blue-600 mb-3'
+                    }, service.title),
+                    React.createElement('p', {
+                      className: 'text-gray-600'
+                    }, service.description)
+                  )
+                )
+              )
+            )
+          )
+        );
+      };
+
+      // About Component
+      const About = () => {
+        return React.createElement('section', {
+          id: 'about',
+          className: 'py-16 bg-gray-100'
+        },
+          React.createElement('div', {
+            className: 'container mx-auto px-4'
+          },
+            React.createElement('h3', {
+              className: 'text-3xl font-bold text-center mb-8 text-blue-600'
+            }, 'About Us'),
+            React.createElement('div', {
+              className: 'max-w-4xl mx-auto text-center'
+            },
+              React.createElement('p', {
+                className: 'text-lg text-gray-700 leading-relaxed mb-12'
+              }, 'Union Services Ltd is a Sudan-based IT company offering a wide range of services including software development, cloud solutions, surveillance systems, and technical support. Our mission is to empower businesses with innovative and reliable technology solutions that drive growth and efficiency.'),
+              React.createElement('div', {
+                className: 'grid grid-cols-1 md:grid-cols-3 gap-8'
+              },
+                React.createElement('div', {
+                  className: 'text-center bg-white p-6 rounded-lg shadow-lg border-2 border-yellow-100'
+                },
+                  React.createElement('h4', {
+                    className: 'text-2xl font-bold text-blue-600 mb-2'
+                  }, '5+'),
+                  React.createElement('p', {
+                    className: 'text-gray-600'
+                  }, 'Years of Experience')
+                ),
+                React.createElement('div', {
+                  className: 'text-center bg-white p-6 rounded-lg shadow-lg border-2 border-yellow-100'
+                },
+                  React.createElement('h4', {
+                    className: 'text-2xl font-bold text-blue-600 mb-2'
+                  }, '100+'),
+                  React.createElement('p', {
+                    className: 'text-gray-600'
+                  }, 'Projects Completed')
+                ),
+                React.createElement('div', {
+                  className: 'text-center bg-white p-6 rounded-lg shadow-lg border-2 border-yellow-100'
+                },
+                  React.createElement('h4', {
+                    className: 'text-2xl font-bold text-blue-600 mb-2'
+                  }, '24/7'),
+                  React.createElement('p', {
+                    className: 'text-gray-600'
+                  }, 'Technical Support')
+                )
+              )
+            )
+          )
+        );
+      };
+
+      // Contact Component
+      const Contact = () => {
+        const [formData, setFormData] = useState({
+          name: '',
+          email: '',
+          message: ''
+        });
+
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          alert('Thank you for your message! We will get back to you soon.');
+          setFormData({ name: '', email: '', message: '' });
+        };
+
+        const handleChange = (e) => {
+          setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+          });
+        };
+
+        return React.createElement('section', {
+          id: 'contact',
+          className: 'py-16 bg-white'
+        },
+          React.createElement('div', {
+            className: 'container mx-auto px-4'
+          },
+            React.createElement('h3', {
+              className: 'text-3xl font-bold text-center mb-12 text-blue-800'
+            }, 'Contact Us'),
+            React.createElement('div', {
+              className: 'max-w-6xl mx-auto'
+            },
+              React.createElement('div', {
+                className: 'grid grid-cols-1 lg:grid-cols-2 gap-8'
+              },
+                React.createElement('div', null,
+                  React.createElement('div', {
+                    className: 'grid grid-cols-1 gap-6 mb-8'
+                  },
+                    React.createElement('div', {
+                      className: 'bg-white p-6 rounded-lg shadow-lg border-2 border-yellow-100'
+                    },
+                      React.createElement('svg', {
+                        className: "w-12 h-12 text-blue-600 mb-4",
+                        fill: "none",
+                        stroke: "currentColor",
+                        viewBox: "0 0 24 24"
+                      }, React.createElement('path', {
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
+                        strokeWidth: "2",
+                        d: "M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      })),
+                      React.createElement('h4', {
+                        className: 'text-xl font-bold mb-2'
+                      }, 'Email'),
+                      React.createElement('a', {
+                        href: 'mailto:info@union-sd.com',
+                        className: 'text-blue-600 hover:underline'
+                      }, 'info@union-sd.com')
+                    ),
+                    React.createElement('div', {
+                      className: 'bg-white p-6 rounded-lg shadow-lg border-2 border-yellow-100'
+                    },
+                      React.createElement('svg', {
+                        className: "w-12 h-12 text-blue-600 mb-4",
+                        fill: "none",
+                        stroke: "currentColor",
+                        viewBox: "0 0 24 24"
+                      }, React.createElement('path', {
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
+                        strokeWidth: "2",
+                        d: "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                      })),
+                      React.createElement('h4', {
+                        className: 'text-xl font-bold mb-2'
+                      }, 'Phone'),
+                      React.createElement('a', {
+                        href: 'tel:+249912988258',
+                        className: 'text-blue-600 hover:underline'
+                      }, '+249-912-988258')
+                    ),
+                    React.createElement('div', {
+                      className: 'bg-white p-6 rounded-lg shadow-lg border-2 border-yellow-100'
+                    },
+                      React.createElement('svg', {
+                        className: "w-12 h-12 text-blue-600 mb-4",
+                        fill: "none",
+                        stroke: "currentColor",
+                        viewBox: "0 0 24 24"
+                      }, React.createElement('path', {
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
+                        strokeWidth: "2",
+                        d: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                      }), React.createElement('path', {
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
+                        strokeWidth: "2",
+                        d: "M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                      })),
+                      React.createElement('h4', {
+                        className: 'text-xl font-bold mb-2'
+                      }, 'Location'),
+                      React.createElement('a', {
+                        href: 'https://maps.app.goo.gl/douhd3aS5A1VLWEh6',
+                        target: '_blank',
+                        rel: 'noopener noreferrer',
+                        className: 'text-blue-600 hover:underline'
+                      }, 'Khartoum, Sudan')
+                    )
+                  ),
+                  React.createElement('div', {
+                    className: 'bg-white p-4 rounded-lg shadow-lg border-2 border-yellow-100'
+                  },
+                    React.createElement('h4', {
+                      className: 'text-xl font-bold mb-4 text-blue-600'
+                    }, 'Find Us'),
+                    React.createElement('div', {
+                      className: 'w-full h-64 bg-gray-200 rounded-lg overflow-hidden'
+                    },
+                      React.createElement('iframe', {
+                        src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123456.78901234567!2d32.5!3d15.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTXCsDMwJzAwLjAiTiAzMsKwMzAnMDAuMCJF!5e0!3m2!1sen!2s!4v1234567890123",
+                        width: "100%",
+                        height: "100%",
+                        style: { border: 0 },
+                        allowFullScreen: true,
+                        loading: "lazy",
+                        referrerPolicy: "no-referrer-when-downgrade",
+                        title: "Union Services Ltd Location"
+                      })
+                    )
+                  )
+                ),
+                React.createElement('div', {
+                  className: 'bg-white p-8 rounded-lg shadow-lg border-2 border-yellow-100'
+                },
+                  React.createElement('h4', {
+                    className: 'text-2xl font-bold mb-6 text-blue-600'
+                  }, 'Send us a Message'),
+                  React.createElement('form', {
+                    onSubmit: handleSubmit,
+                    className: 'space-y-6'
+                  },
+                    React.createElement('div', null,
+                      React.createElement('label', {
+                        htmlFor: 'name',
+                        className: 'block text-sm font-medium text-gray-700 mb-2'
+                      }, 'Full Name'),
+                      React.createElement('input', {
+                        type: 'text',
+                        id: 'name',
+                        name: 'name',
+                        value: formData.name,
+                        onChange: handleChange,
+                        required: true,
+                        className: 'w-full px-3 py-2 border border-yellow-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
+                      })
+                    ),
+                    React.createElement('div', null,
+                      React.createElement('label', {
+                        htmlFor: 'email',
+                        className: 'block text-sm font-medium text-gray-700 mb-2'
+                      }, 'Email Address'),
+                      React.createElement('input', {
+                        type: 'email',
+                        id: 'email',
+                        name: 'email',
+                        value: formData.email,
+                        onChange: handleChange,
+                        required: true,
+                        className: 'w-full px-3 py-2 border border-yellow-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
+                      })
+                    ),
+                    React.createElement('div', null,
+                      React.createElement('label', {
+                        htmlFor: 'message',
+                        className: 'block text-sm font-medium text-gray-700 mb-2'
+                      }, 'Message'),
+                      React.createElement('textarea', {
+                        id: 'message',
+                        name: 'message',
+                        rows: 5,
+                        value: formData.message,
+                        onChange: handleChange,
+                        required: true,
+                        className: 'w-full px-3 py-2 border border-yellow-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
+                      })
+                    ),
+                    React.createElement('button', {
+                      type: 'submit',
+                      className: 'w-full bg-gradient-to-r from-blue-600 to-yellow-600 hover:from-blue-700 hover:to-yellow-700 text-white font-bold py-3 px-4 rounded-md transition-all flex items-center justify-center'
+                    },
+                      React.createElement('svg', {
+                        className: "w-4 h-4 mr-2",
+                        fill: "none",
+                        stroke: "currentColor",
+                        viewBox: "0 0 24 24"
+                      }, React.createElement('path', {
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
+                        strokeWidth: "2",
+                        d: "M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                      })),
+                      'Send Message'
+                    )
+                  )
+                )
+              )
+            )
+          )
+        );
+      };
+
+      // Footer Component
+      const Footer = () => {
+        return React.createElement('footer', {
+          className: 'bg-gradient-to-r from-blue-800 to-yellow-600 text-white text-center py-8 mt-16'
+        },
+          React.createElement('div', {
+            className: 'container mx-auto px-4'
+          },
+            React.createElement('p', {
+              className: 'text-lg font-medium'
+            }, '© 2025 Union Services Ltd. All rights reserved.'),
+            React.createElement('p', {
+              className: 'mt-2 text-sm opacity-90'
+            }, 'Empowering businesses with innovative IT solutions')
+          )
+        );
+      };
+
+      // Main App Component
+      const App = () => {
+        return React.createElement('div', {
+          className: 'min-h-screen bg-gray-50'
+        },
+          React.createElement(Header),
+          React.createElement(Navigation),
+          React.createElement(Hero),
+          React.createElement(Services),
+          React.createElement(About),
+          React.createElement(Contact),
+          React.createElement(Footer)
+        );
+      };
+
+      // Render the App
+      ReactDOM.render(React.createElement(App), document.getElementById('root'));
+    </script>
+  </body>
+</html>
